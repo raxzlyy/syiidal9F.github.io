@@ -1,515 +1,98 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Album Kenangan Kelas 9F SMPN 1 Magetan</title>
-  <style>
-    :root {
-      --warna-utama: #1e3a5f;
-      --warna-teks: #f0f0f0;
-      --warna-accent: #00bcd4;
-      --warna-card: #2c3e50;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
-      color: var(--warna-teks);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background-color: var(--warna-utama);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-    }
-
-    header img {
-      width: 60px;
-      margin-right: 20px;
-      filter: brightness(120%);
-      border-radius: 10px;
-    }
-
-    .judul {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .judul h1 {
-      margin: 0;
-      font-size: 28px;
-      color: var(--warna-accent);
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-shadow: 0 0 4px #00bcd4;
-    }
-
-    .judul span {
-      font-size: 14px;
-      color: #ccc;
-      font-style: italic;
-    }
-
-    .controls {
-      text-align: center;
-      margin: 20px;
-    }
-
-    .controls button {
-      background: var(--warna-accent);
-      color: #000;
-      padding: 12px 28px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 3px 7px rgba(0, 188, 212, 0.5);
-    }
-
-    .controls button:hover {
-      background-color: #00acc1;
-      box-shadow: 0 5px 15px rgba(0, 188, 212, 0.8);
-    }
-
-    .section {
-      margin: 30px 40px;
-    }
-
-    .section h2 {
-      border-bottom: 3px solid var(--warna-accent);
-      padding-bottom: 8px;
-      margin-bottom: 25px;
-      font-weight: 700;
-      font-size: 24px;
-      text-shadow: 0 0 6px #00bcd4;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .album,
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background-color: var(--warna-card);
-      border-radius: 14px;
-      padding: 12px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
-      user-select: none;
-    }
-
-    .card:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 20px var(--warna-accent);
-      z-index: 10;
-      cursor: pointer;
-    }
-
-    .card img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .card img:hover {
-      filter: brightness(1.1);
-    }
-
-    .card h3 {
-      margin: 5px 0 2px;
-      font-size: 18px;
-      color: var(--warna-accent);
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      user-select: text;
-    }
-
-    .nis {
-      font-size: 13px;
-      color: #8ecae6;
-      margin-bottom: 6px;
-      font-style: italic;
-      user-select: text;
-    }
-
-    .desc {
-      font-size: 14px;
-      color: #b0bec5;
-      font-weight: 400;
-      user-select: text;
-    }
-
-    /* Foto kenangan tanpa teks */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .gallery img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      /* Memaksa kotak foto landscape */
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px var(--warna-accent);
-    }
-
-    @media (max-width: 600px) {
-      .card img {
-        .card img {
-          width: 100%;
-          /* Memenuhi lebar card */
-          height: 1080px;
-          /* Tetap tinggi sama semua */
-          object-fit: cover;
-          /* Memotong gambar secara proporsional tanpa distorsi */
-          border-radius: 8px;
-        }
-      }
-
-      .gallery img {
-        height: 140px;
-      }
-
-      .section {
-        margin: 20px 15px;
-      }
-    }
-
-    .foto-angkatan {
-      text-align: center;
-      margin: 50px 0;
-    }
-
-    .foto-angkatan h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    .foto-angkatan-img {
-      width: 90%;
-      max-width: 1000px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    footer {
-      background-color: #4682b4;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: 30px;
-    }
-.biodata-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 20px;
-}
-
-.pembuat-bio {
-  background-color: #1d3b4d;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  width: 340px;
-  padding: 25px 20px;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.pembuat-bio:hover {
-  transform: translateY(-5px);
-}
-
-.pembuat-bio img {
-  width: 280px;
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 0 10px #00bfff;
-  margin-bottom: 18px;
-}
-
-.bio-text h3 {
-  font-size: 1.25rem;
-  color: #00bfff;
-  margin-bottom: 10px;
-}
-
-.bio-text p {
-  font-size: 1rem;
-  color: #ddd;
-}
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengingat Tugas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-  <header>
-    <img src="foto/logo.jpg" alt="Logo Kelas" />
-    <div class="judul">
-      <h1>Kenangan Kelas 9F</h1>
-      <span>SMPN 1 Magetan - Tahun 2025</span>
-    </div>
-  </header>
-
-
-
-  <!-- KATA PEMBUKA -->
-  <section class="section" id="kata-pembuka">
-    <h2>📖 Kenangan Tak Terlupakan </h2>
-    <p>
-      Nggak kerasa, ya... dulu masuk SMP masih tinggi-tinggi meja, sekarang mau lulus udah tinggi-tinggi cita-cita (dan
-      utang janji traktiran 😆).
-      Tiga tahun bareng kalian itu seperti nonton film seri — penuh plot twist, kadang bikin ngakak, kadang bikin emosi,
-      tapi selalu bikin kangen.
-      Dari rebutan jajan di kantin, pura-pura lupa PR, sampai drama kelas yang nggak pernah sepi gosip — semuanya
-      bakal jadi cerita yang suatu hari nanti kita ketawain bareng sambil bilang, “Ingat nggak waktu kita...?”
-      Dan hari ini, kita semua udah di episode terakhir SMP. Sedih sih, tapi tenang… meskipun tamat, ini bukan akhir
-      dari cerita.
-      Kita semua bintang utama di jalan masing-masing. 🎬
-    </p>
-  </section>
-
-  <section class="section">
-    <h2>👨‍🎓 Siswa </h2>
-    <div class="album" id="album-siswa"></div>
-  </section>
-
-  <section class="section">
-    <h2>👩‍🏫 Wali Kelas</h2>
-    <div class="album" id="wali-kelas"></div>
-  </section>
-
-  <section class="section">
-    <h2>📸 Foto Kenangan Kelas</h2>
-    <div class="gallery" id="foto-kenangan"></div>
-  </section>
-
-  <section class="section">
-    <h2>🫂 Foto Angkatan</h2>
-    <div class="album" id="album-siswa"></div>
-  </section>
-
-  <audio id="clickSound" src="audio/jendela.mp3" autoplay loop></audio>
-
-
-  <script>
-    const siswa = [
-      { nama: "Ailsa Islamy Fajrina", nis: "24239", foto: "Ailsa.jpg", tanggalLahir: "30 Juli 2010", deskripsi: "" },
-      { nama: "Asyifa Putri Riyadi", nis: "24240", foto: "asyifa.jpg", tanggalLahir: "26 Maret 2010", deskripsi: "" },
-      { nama: "Beckha Gelline Prasetya", nis: "24241", foto: "beckha.jpg", tanggalLahir: "06 Maret 2010", deskripsi: "" },
-      { nama: "Damara Zivanna Gitavrea", nis: "24242", foto: "ziva.jpg", tanggalLahir: "14 Januari 2010", deskripsi: "" },
-      { nama: "Decha Widita Basuki", nis: "24243", foto: "decha.jpg", tanggalLahir: "23 September 2009", deskripsi: "" },
-      { nama: "Elmira Dwi Dzhuliakhania", nis: "24244", foto: "elmira.jpg", tanggalLahir: "18 Desember 2009", deskripsi: "" },
-      { nama: "Elysabeth Margareta Serafim", nis: "24245", foto: "afim.jpg", tanggalLahir: "14 Oktober 2009", deskripsi: "" },
-      { nama: "Farhan Husain Ilyasa", nis: "24246", foto: "farhan.jpg", tanggalLahir: "07 Juli 2009", deskripsi: "" },
-      { nama: "Geisha Vierra Putri Fenisya", nis: "24247", foto: "geisha.jpg", tanggalLahir: "16 Juli 2009", deskripsi: "" },
-      { nama: "Ghaisendra Bimandhanu", nis: "24248", foto: "ghais.jpg", tanggalLahir: "20 Juni 2011", deskripsi: "" },
-      { nama: "Gharra Zea Janitraputri", nis: "24249", foto: "zea.jpg", tanggalLahir: "14 Januari 2010", deskripsi: "" },
-      { nama: "Jadda Imandayu", nis: "24250", foto: "dayu.jpg", tanggalLahir: "17 Januari 2010", deskripsi: "" },
-      { nama: "Khanza Fazian Toro", nis: "24251", foto: "khanza.jpg", tanggalLahir: "03 Agustus 2009", deskripsi: "" },
-      { nama: "Mahira Rahmania Meyza", nis: "24252", foto: "meyza.jpg", tanggalLahir: "08 Januari 2010", deskripsi: "" },
-      { nama: "Muhfid Fadlurrahman", nis: "24253", foto: "mufid.jpg", tanggalLahir: "20 September 2009", deskripsi: "" },
-      { nama: "Muhammad Azam Faruq", nis: "24254", foto: "azam.jpg", tanggalLahir: "19 April 2010", deskripsi: "" },
-      { nama: "Muhammad 'Afif Fairuz", nis: "24255", foto: "afif.jpg", tanggalLahir: "05 Mei 2009", deskripsi: "" },
-      { nama: "Muhammad Albhian Dhivanka", nis: "24256", foto: "aldhi.jpg", tanggalLahir: "12 April 2009", deskripsi: "" },
-      { nama: "Muhammad Zaki Wahyu Winarta", nis: "24257", foto: "zaki.jpg", tanggalLahir: "09 Mei 2010", deskripsi: "" },
-      { nama: "Nabilla Zhafira Pramono", nis: "24258", foto: "nabila.jpg", tanggalLahir: "24 Oktober 2009", deskripsi: "" },
-      { nama: "Nareswari Valeria Sasikirana", nis: "24259", foto: "nares.jpg", tanggalLahir: "04 Maret 2010", deskripsi: "" },
-      { nama: "Naufal Daunisya Rutti", nis: "24260", foto: "nopal.jpg", tanggalLahir: "10 Juni 2010", deskripsi: "" },
-      { nama: "Odelya Amanda", nis: "24261", foto: "amanda.jpg", tanggalLahir: "15 Juni 2009", deskripsi: "" },
-      { nama: "Pasha Pradana Purbowo", nis: "24262", foto: "pasha.jpg", tanggalLahir: "11 Agustus 2009", deskripsi: "" },
-      { nama: "Prastiti Rahayu Wijaya", nis: "24263", foto: "asti.jpg", tanggalLahir: "22 Juni 2010", deskripsi: "" },
-      { nama: "Radyakza Rizwan Noufal Aldafi", nis: "24264", foto: "azka.jpg", tanggalLahir: "23 November 2009", deskripsi: "" },
-      { nama: "Rasyiid Tiyo Pratama", nis: "24265", foto: "syiid.jpg", tanggalLahir: "23 Juni 2010", deskripsi: "" },
-      { nama: "Retno Diah Puspitasari", nis: "24266", foto: "diah.jpg", tanggalLahir: "04 Febuari 2010", deskripsi: "" },
-      { nama: "Syakira Marella Amalia", nis: "24267", foto: "syakira.jpg", tanggalLahir: "31 Desember 2009", deskripsi: "" },
-      { nama: "Yobelín Rapha Hosianarino", nis: "24268", foto: "yobel.jpg", tanggalLahir: "31 Januari 2010", deskripsi: "" },
-      { nama: "Yoga Prawira", nis: "24269", foto: "yoga.jpg", tanggalLahir: "", deskripsi: "07 Mei 2010" },
-      { nama: "Zhafirah Nurdiana Wibowo", nis: "24270", foto: "zhafir.jpg", tanggalLahir: "18 Desember 2009", deskripsi: "" }
-    ];
-
-
-    // Data wali kelas (bisa ditambah jika ada)
-    const waliKelas = [
-      { nama: "Ibu Fitria Yuliyanti, S.Pd", foto: "bfitria.jpg", deskripsi: "Wali Kelas 7F" },
-      { nama: "Ibu Suparmi, S.Kom", foto: "bparmi.jpg", deskripsi: "Wali Kelas 8F" },
-      { nama: "Ibu Dra. Asna Eny Raya", foto: "basna.jpg", deskripsi: "Wali Kelas 9F" }
-    ];
-
-
-
-    // Foto kenangan kelas (ganti sesuai file foto kamu)
-    const fotoKenangan = [
-      "7.jpg",
-      "77.jpg",
-      "777.jpg",
-      "8.jpg",
-      "88.jpg",
-      "888.jpg",
-      "8888.jpg",
-      "9.jpg",
-      "99.jpg",
-      "999.jpg",
-      "9999.jpg",
-      "99999.jpg",
-      "92.jpg",
-      "93.jpg",
-      "k1.jpg",
-      "k2.jpg",
-      "k3.jpg",
-      "k4.jpg",
-      "k5.jpg",
-      "k6.jpg",
-    ];
-
-    function toggleMusik() {
-      const audio = document.getElementById("musikLatar");
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-    }
-
-
-    function tampilkanAlbum(data, targetId) {
-      const target = document.getElementById(targetId);
-      data.forEach(item => {
-        const card = document.createElement("div");
-        card.className = "card";
-        if (item.nis) {
-          // untuk siswa
-          card.innerHTML = `
-          <img src="foto/${item.foto}" alt="Foto ${item.nama}" />
-          <h3>${item.nama}</h3>
-          <div class="nis">NIS: ${item.nis}</div>
-          ${item.tanggalLahir ? `<div class="desc">Lahir: ${item.tanggalLahir}</div>` : ""}
-          <div class="desc">${item.deskripsi}</div>
-        `;
-        } else {
-          // untuk wali kelas
-          card.innerHTML = `
-          <img src="foto/${item.foto}" alt="Foto ${item.nama}" />
-          <h3>${item.nama}</h3>
-          <div class="desc">${item.deskripsi}</div>
-        `;
-        }
-        target.appendChild(card);
-      });
-    }
-
-    function tampilkanFotoKenangan(arr, targetId) {
-      const target = document.getElementById(targetId);
-      arr.forEach(src => {
-        const img = document.createElement("img");
-        img.src = "foto/" + src;
-        img.alt = "Foto Kenangan Kelas";
-        target.appendChild(img);
-      });
-    }
-    // Tampilkan pembuat album
-function tampilkanPembuat() {
-  const kontainer = document.getElementById("pembuat-album");
-  pembuatAlbum.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="foto/${p.foto}" alt="${p.nama}" />
-      <h3>${p.nama}</h3>
-      <p class="desc">${p.deskripsi}</p>
-    `;
-    kontainer.appendChild(card);
-  });
-}
-
-
-    tampilkanAlbum(siswa, "album-siswa");
-    tampilkanAlbum(waliKelas, "wali-kelas");
-    tampilkanFotoKenangan(fotoKenangan, "foto-kenangan");
-  </script>
-
-  <section id="foto-angkatan" class="foto-angkatan">
-    <h2>VYOMA RAKSHA</h2>
-    <img src="foto/angkatan.jpg" alt="Foto Angkatan" class="foto-angkatan-img">
-  </section>
-
-  <!-- KATA PENUTUP -->
-  <section class="section" id="kata-penutup">
-    <h2>🎓 Sampai Jumpa, 9F!</h2>
-    <p>
-      Terima kasih buat semua hal random yang pernah terjadi: dari pensil sama polpen dipinjem nggak balik,
-      sampai tukeran contekan pas ujian (eh… itu jangan ditiru ya 😜). Buat guru-guru tercinta, maaf kalau kami lebih
-      banyak bikin pusing
-      daripada bikin ranking. Tapi percayalah, semua nasihat dan omelan itu bakal kami bawa... setidaknya sampai nemu
-      guru baru yang lebih galak 😅
-      Perpisahan ini emang bikin mellow, tapi hidup harus terus lanjut. Jangan lupa, kita mungkin pisah tempat, tapi
-      tetap satu grup WA
-      (dan satu grup kenangan). Sampai ketemu di masa depan, dalam versi diri kita yang lebih keren… atau minimal lebih
-      rajin mandi. 🤣
-      Love you all, keluarga 9F yang terlalu chaotic untuk dilupakan 💖
-    </p>
-  </section>
-
-  <!-- BIODATA PEMBUAT -->
- <section class="section">
-  <h2>🖋️ Biodata Pembuat</h2>
-  <div class="biodata-container">
-    
-    <!-- Biodata 1 -->
-    <div class="card pembuat-bio">
-      <img src="foto/rasyiid.jpg" alt="Rasyiid Tiyo Pratama">
-      <div class="bio-text">
-        <h3><span style="color:deepskyblue;">Nama :</span> Rasyiid Tiyo Pratama</h3>
-        <p>Siswa kelas 9F SMPN 1 Magetan. Pembuat album kenangan ini sebagai bahan gabut dan kenang-kenangan indah.</p>
+  <main class="app-shell">
+    <section class="hero-card">
+      <p class="eyebrow">Task Reminder</p>
+      <h1>Pengingat tugas yang sederhana, rapi, dan siap dipakai harian.</h1>
+      <p class="hero-copy">
+        Catat tugas, pilih waktu pengingat, lalu biarkan aplikasi ini membantu kamu tetap on track.
+      </p>
+      <div class="hero-actions">
+        <button id="notifyButton" class="secondary-button" type="button">Aktifkan Notifikasi</button>
+        <span id="notifyStatus" class="status-chip">Notifikasi belum aktif</span>
       </div>
-    </div>
+    </section>
 
-    <!-- Biodata 2 -->
-    <div class="card pembuat-bio">
-      <img src="foto/bibhi.jpg" alt="Muhammad Albhian Dhivanka">
-      <div class="bio-text">
-        <h3><span style="color:deepskyblue;">Nama :</span> Muhammad Albhian Dhivanka</h3>
-        <p>Siswa kelas 9F SMPN 1 Magetan. Tidak Bantu Sama Sekali Tetapi Pengen Ditulis Namanya.</p>
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <p class="section-label">Tambah Tugas</p>
+          <h2>Buat pengingat baru</h2>
+        </div>
       </div>
-    </div>
 
-  </div>
-</section>
+      <form id="taskForm" class="task-form">
+        <label>
+          Judul tugas
+          <input id="title" name="title" type="text" maxlength="80" placeholder="Contoh: Kirim laporan mingguan" required>
+        </label>
 
+        <label>
+          Deskripsi
+          <textarea id="description" name="description" rows="3" maxlength="240" placeholder="Tambahkan catatan singkat jika perlu"></textarea>
+        </label>
+
+        <div class="form-grid">
+          <label>
+            Tanggal
+            <input id="dueDate" name="dueDate" type="date" required>
+          </label>
+
+          <label>
+            Waktu
+            <input id="dueTime" name="dueTime" type="time" required>
+          </label>
+        </div>
+
+        <button class="primary-button" type="submit">Simpan Pengingat</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <p class="section-label">Daftar Tugas</p>
+          <h2>Pengingat aktif</h2>
+        </div>
+        <span id="taskCount" class="counter-pill">0 tugas</span>
+      </div>
+
+      <div id="emptyState" class="empty-state">
+        <h3>Belum ada tugas</h3>
+        <p>Tambahkan tugas pertama kamu untuk mulai menerima pengingat.</p>
+      </div>
+
+      <div id="taskList" class="task-list" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <template id="taskItemTemplate">
+    <article class="task-card">
+      <div class="task-content">
+        <div class="task-topline">
+          <h3 class="task-title"></h3>
+          <span class="task-badge"></span>
+        </div>
+        <p class="task-description"></p>
+        <p class="task-meta"></p>
+      </div>
+      <div class="task-actions">
+        <button class="ghost-button complete-button" type="button">Selesai</button>
+        <button class="ghost-button delete-button" type="button">Hapus</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
